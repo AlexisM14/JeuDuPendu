@@ -14,8 +14,7 @@ accent_min_dico = {'a': ('Ã\xa0', 'Ã¢', 'Ã¤'),
                    'c': 'Ã§',
                    'ae': 'Ã¦',
                    'oe': 'Å“'}
-alphabet_min = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
-                'v', 'w', 'x', 'y', 'z')
+alphabet_min = 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 accent_maj_dico = {'A': ('Ã€', 'Ã‚', 'Ã„'),
                    'E': ('Ã‰', 'Ãˆ', 'ÃŠ', 'Ã‹'),
                    'I': ('ÃŽ', 'O', 'Ã”', 'Ã–'),
@@ -24,8 +23,7 @@ accent_maj_dico = {'A': ('Ã€', 'Ã‚', 'Ã„'),
                    'C': 'Ã‡',
                    'AE': 'Ã†',
                    'OE': 'Å'}
-alphabet_maj = ('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-                'V', 'W', 'X', 'Y', 'Z')
+alphabet_maj = 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 alphabet = alphabet_maj + alphabet_min
 
 
@@ -40,13 +38,13 @@ def ouvrir_fichier(nom):
 
 
 # Définition de la fonction passer_liste_vers_mot
-def passer_liste_vers_mot(liste):
+def passer_liste_vers_mot(L):
     """Cette fonction permet de passer d'une liste dont les éléments sont les lettres d'un mot
     à une chaîne de caractère représentant le mot"""
     # Prend une liste de lettres en entrée et renvoie le mot formé de ces lettres en chaîne de caractère
     mot = ''
-    for i in liste:
-        if i is not str:
+    for i in L:
+        if type(i) != str:
             return None
         else:
             mot += i
@@ -74,7 +72,7 @@ def convertir_special_vers_lettre_min(mot):
                 nouvelle_lettre = 'a'
                 emplacement = i
                 longueur = 5
-            # Sinon, on regarde alors le duo de 2 lettres et si la combinaison n'existe par ainsi, il s'agit de "à".
+            # Sinon, on regarde alors le duo de 2 lettres et si la combinaison n'existe par ainsi, il s'agit de "à"
             else:
                 duo_caract = mot[i] + mot[i + 1]
                 emplacement = i
@@ -128,7 +126,7 @@ def convertir_mot_en_min(mot):
     mot_en_liste = [i for i in mot]
     # On parcourt le mot
     for i in range(len(mot_en_liste)):
-        # On vérifie que la lettre est en majuscule, si c'est le cas on la convertie en minuscule
+        # On vérifie que la lettre est en majuscule, si c'est le cas on la convertit en minuscule
         if mot_en_liste[i] in alphabet_maj:
             # On récupère l'index de la lettre majuscule dans l'alphabet
             print(mot_en_liste[i])
@@ -317,12 +315,11 @@ def main():
         # S'il ne reste qu'une erreur à l'utilisateur, qu'il lui manque
         # plus d'une lettre à découvrir et qu'il n'a pas encore refusé l'indice, on lui propose un indice
 
-        # Il y a un problème lorsqu'il reste n lettre à découvrir et qu'elles sont identiques, il faut soit proposer
-        # l'indice et dans ce cas ne pas ajouter la lettre à la liste des lettres découvertes sinon on ne peut
-        # plus jouer, soit ne pas proposer l'indice, mais dans ce cas ça donne une info sur les lettres restantes
+        # Il y a un probleme lorsqu'il reste n lettre à découvrir et qu'elles sont identiques, il faut soit proposer l'indice et dans ce cas ne pas ajouter la lettre à la liste des lettres découvertes sinon on ne peut plus jouer, soit ne pas proposer l'indice mais dans ce cas ca donne une info sur les lettres restantes
 
         if nbre_lettres_fausses == nbre_essais_max - 1 and nbre_lettres_correctes < nbre_trous - 1 and indice:
-            print("Voulez-vous un indice ?")
+            print("Voulez-vous un indice ? Il se peut que celui vous fasse gagner la partie. "
+                  "Si vous refusez vous n'aurez plus d'autre occasion d'avoir un indice")
             reponse = choisir_oui_ou_non()
             if reponse:
                 indice = False
@@ -330,18 +327,17 @@ def main():
                 while mot_decouvert[lettre_bonus_idx] == mot_a_deviner[lettre_bonus_idx]:
                     lettre_bonus_idx = r.randint(1, len(mot_a_deviner) - 2)
                 lettre_bonus = mot_a_deviner[lettre_bonus_idx]
-                liste_lettres_correctes.append(lettre_bonus)
-                nbre_lettres_correctes += 1
-                mot_decouvert[lettre_bonus_idx] = mot_a_deviner[lettre_bonus_idx]
-                nettoyer_ecran()
-                print(f"Et voici une lettre bonus ;), il s'agit de la lettre {lettre_bonus}")
-                afficher_etat_jeu(nbre_lettres_fausses, nbre_essais_max, liste_lettres_fausses, mot_decouvert)
-
+                print(f"Mon petit doigt me dit que la lettre '{lettre_bonus}' appartient au mot...")
             else:
                 nettoyer_ecran()
                 print("Dommage... Bonne chance pour trouver la dernière lettre !")
                 afficher_etat_jeu(nbre_lettres_fausses, nbre_essais_max, liste_lettres_fausses, mot_decouvert)
             indice = False
+
+        # Probabilité d'avoir un indice supplémentaire : 25% (25 sur 100)
+        nbre_aleatoire = r.randint(1, 100)
+        if nbre_aleatoire < 26:
+            indice = True
 
         while boucle2:
             print(" ")
@@ -401,6 +397,7 @@ def main():
             main()
         else:
             print("Dommage... A bientôt !")
+
 
     elif nbre_lettres_fausses == nbre_essais_max:
         nettoyer_ecran()
