@@ -293,7 +293,7 @@ def main():
     # On propose au joueur de jouer avec son propre fichier
     print("Avez vous un fichier personnalisé de mots ?")
     print("Le fichier doit être enregistré dans le même dossier que ce script.")
-    print("Si ce n'est pas le cas, cela menera à une erreur et il faudra relancer le script.")
+    print("Si ce n'est pas le cas, cela mènera à une erreur et il faudra relancer le script.")
     if choisir_oui_ou_non():
         nom_fichier = input("Entrez le nom du fichier dans lequel sont enregistrés vos mots en y ajoutant '.txt' ")
     else:
