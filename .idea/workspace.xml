@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04198609-c030-47e9-afdb-088a66bf14da" name="Changes" comment="V1">
+    <list default="true" id="04198609-c030-47e9-afdb-088a66bf14da" name="Changes" comment="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jeu.py" beforeDir="false" afterPath="$PROJECT_DIR$/jeu.py" afterDir="false" />
     </list>
@@ -28,35 +28,35 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AlexisM14"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AlexisM14&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/AlexisM14/JeuDuPendu.git",
-    "accountId": "6ac04458-bf86-4856-a141-34e1b09d4f30"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AlexisM14/JeuDuPendu.git&quot;,
+    &quot;accountId&quot;: &quot;6ac04458-bf86-4856-a141-34e1b09d4f30&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2gh7vZH1I5qbip2acNcl4rAqzLM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Jeu.executor": "Run",
-    "Python.jeu.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "BugIndiceLettreJumelles"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Jeu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.jeu.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BugIndiceLettreJumelles&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -81,7 +81,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716138678844</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot">
+      <option name="closed" value="true" />
+      <created>1716148913503</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716148913503</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="V1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V1" />
+    <MESSAGE value="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot" />
   </component>
 </project>
