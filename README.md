@@ -30,6 +30,7 @@ Lancer le script, suiver les instructions de la console.
 ## Fabriqué avec
 
 * [PyCharms](https://www.jetbrains.com/pycharm/download/?section=windows) - IDE
+* Windows 11
 
 ## Auteur
 Alexis Markiewicz
