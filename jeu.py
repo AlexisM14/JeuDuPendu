@@ -2,6 +2,7 @@
 
 # Importation de la bibliothèque qui permettra de choisir un mot au hasard
 import random as r
+import os
 
 # On crée un dictionnaire qui associe les accents à leur lettre, et un tuple qui correspond à l'alphabet.
 # En minuscule et majuscule
@@ -30,15 +31,14 @@ alphabet = alphabet_maj + alphabet_min
 
 
 # Définition de la fonction ouvrir_fichier
-def lire_fichier(nom):
+def lire_fichier(nom_fichier):
     """Cette fonction permet d'ouvrir le fichier "nom" et d'en extraire les mots"""
     # Prend le nom du fichier en entrée et renvoie une liste des mots contenus dans le fichier
     # Entrée : chaine de caractère
     # Sortie : liste
-    mots_pendu = open(nom)
-    liste_mots_pendu = [i[0:-1] for i in mots_pendu.readlines()]
-    mots_pendu.close()
-    return liste_mots_pendu
+    with open(nom_fichier, 'r') as fio:
+        liste_mots = fio.read().splitlines()
+    return liste_mots
 
 
 # Définition de la fonction passer_liste_vers_mot
@@ -66,7 +66,6 @@ def convertir_special_vers_lettre_min(mot):
     longueur = 0  # Longueur de la lettre accentuée (combien de caractères il faut échanger avec la lettre sans accent)
     conversion = False  # Si on doit convertir une lettre alors conversion devient True
     duo_caract = ''  # Le couple de caractère qui crypte l'accent
-
     # On parcourt le mot lettre par lettre
     for i in range(taille_mot):
         # Toutes les lettres accentuées commencent par "Ã", donc dès qu'on croise "Ã", c'est un accent
@@ -79,7 +78,7 @@ def convertir_special_vers_lettre_min(mot):
                 emplacement = i
                 longueur = 5
             # Sinon, on regarde alors le duo de 2 lettres et si la combinaison n'existe par ainsi, il s'agit de "à"
-            else:
+            elif i + 1 < taille_mot:
                 duo_caract = mot[i] + mot[i + 1]
                 emplacement = i
                 longueur = 2
@@ -196,21 +195,21 @@ def dessiner_pendu(n, etat=1):
             print("   |")
             print(" __|_______")
         elif n == 4:
-            print("   ________")
-            print("   |      |")
-            print("   |      O")
-            print("   |     l|/")
-            print("   |      |")
-            print("   |")
-            print("   |")
-            print(" __|_______")
+            print(f"   ________")
+            print(f"   |      |")
+            print(f"   |      O")
+            print(f"   |     l|/")
+            print(f"   |      |")
+            print(f"   |")
+            print(f"   |")
+            print(f" __|_______")
         elif n == 5:
             print("   ________")
             print("   |      |")
             print("   |      O")
             print("   |     l|/")
             print("   |      |")
-            print("   |     1")
+            print("   |     d")
             print("   |")
             print(" __|_______")
         elif n == 6:
@@ -219,7 +218,7 @@ def dessiner_pendu(n, etat=1):
             print("   |      O")
             print("   |     l|/")
             print("   |      |")
-            print("   |     1 1")
+            print("   |     d b")
             print("   |")
             print(" __|_______")
 
@@ -282,25 +281,31 @@ def lisser_mot(mot):
     """Cette fonction sert à enlever les accents du mot et le convertir en minuscule"""
     # Entrée : mot une chaîne de caractère
     # Sortie : une chaîne de caractère correspondante au mot en minuscule, sans accent
-    mot_bis = convertir_special_vers_lettre_min(mot)
-    mot_bis = convertir_special_vers_lettre_maj(mot)
-    return convertir_mot_en_min(mot)
+    mot_sans_accent_min = convertir_special_vers_lettre_min(mot)
+    mot_sans_accent = convertir_special_vers_lettre_maj(mot_sans_accent_min)
+    return convertir_mot_en_min(mot_sans_accent)
 
 
 # Definition de la procédure main(), il s'agit du jeu, le définir ainsi permet de le relancer par la suite
 def main():
     """Cette fonction est le jeu du pendu"""
+    nettoyer_ecran()
     # On propose au joueur de jouer avec son propre fichier
     print("Avez vous un fichier personnalisé de mots ?")
     print("Le fichier doit être enregistré dans le même dossier que ce script.")
     print("Si ce n'est pas le cas, cela mènera à une erreur et il faudra relancer le script.")
     if choisir_oui_ou_non():
         nom_fichier = input("Entrez le nom du fichier dans lequel sont enregistrés vos mots en y ajoutant '.txt' ")
+        while not os.path.isfile(nom_fichier):
+            print("")
+            print("Le fichier n'a pas été trouvé, vérifiez qu'il se situe dans le même dossier que ce script.")
+            nom_fichier = input("Entrez le nom du fichier dans lequel sont enregistrés vos mots en y ajoutant '.txt' ")
     else:
         nom_fichier = 'mots_pendu.txt'
 
     # On cherche le mot à faire deviner dans le fichier
-    mot_a_deviner = lisser_mot(r.choice(lire_fichier(nom_fichier)))
+    mot_choisi = r.choice(lire_fichier(nom_fichier))
+    mot_a_deviner = lisser_mot(mot_choisi)
     # On stocke la lettre initiale et finale du mot, elles seront affichées au joueur
     lettre_init = mot_a_deviner[0]
     lettre_fin = mot_a_deviner[-1]
@@ -335,8 +340,8 @@ def main():
         # S'il ne reste qu'une erreur à l'utilisateur, qu'il lui manque plus d'une lettre à découvrir
         # et qu'il n'a pas encore eu d'indice, on lui propose un indice
         if nbre_lettres_fausses == 6 - 1 and nbre_lettres_correctes < nbre_trous - 1 and indice:
-            print("Voulez-vous un indice ? Il se peut qu'il vous fasse gagner la partie. "
-                  "Si vous refusez vous n'aurez plus d'autre occasion d'avoir un indice")
+            print("Voulez-vous un indice ? Il se peut qu'il vous fasse gagner la partie. ")
+            print("Si vous refusez vous n'aurez plus d'autre occasion d'avoir un indice")
             if choisir_oui_ou_non():
                 lettre_bonus_idx = r.randint(1, len(mot_a_deviner) - 2)  # On choisit un index aléatoirement
                 # Tant que la lettre est déjà découverte

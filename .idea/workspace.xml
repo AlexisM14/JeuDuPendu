@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04198609-c030-47e9-afdb-088a66bf14da" name="Changes" comment="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot">
+    <list default="true" id="04198609-c030-47e9-afdb-088a66bf14da" name="Changes" comment="Version finale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jeu.py" beforeDir="false" afterPath="$PROJECT_DIR$/jeu.py" afterDir="false" />
     </list>
@@ -27,6 +27,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -40,6 +41,9 @@
     &quot;accountId&quot;: &quot;6ac04458-bf86-4856-a141-34e1b09d4f30&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/efa3ecb9-9d4f-47d7-9681-64bfc9acbcff_1cc6589cbf880d380a5bb574baa38811-4b124956b45d4bdacf338da137e9c53b392f1560.zip.cff/1cc6589cbf880d380a5bb574baa38811-4b124956b45d4bdacf338da137e9c53b392f1560/README-Template.md" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -89,7 +93,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716148913503</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot">
+      <option name="closed" value="true" />
+      <created>1716221686449</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716221686449</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Version finale">
+      <option name="closed" value="true" />
+      <created>1716221797475</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716221797475</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +126,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="V1" />
     <MESSAGE value="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot" />
-    <option name="LAST_COMMIT_MESSAGE" value="Correction bug lettre double &#10;Maintenant on dit la lettre indice au lieu de l'imposer dans le mot" />
+    <MESSAGE value="Version finale" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version finale" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/jeu.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
