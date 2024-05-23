@@ -330,7 +330,7 @@ def main():
     # on met "_" par la suite, on remplacera "_" par les lettres découvertes
     mystere = '_'
     mot_decouvert = [lettre_init] + nbre_trous * [mystere] + [lettre_fin]  # Mot sous forme de liste, lettre par lettre
-    print(f"Le mot est caché derrière : {lettre_init + nbre_trous * mystere + lettre_fin} ")
+    print(f"Le mot est caché derrière : {passer_liste_vers_mot(mot_decouvert)} ")
 
     # Avant de rentrer dans la boucle du jeu, on affirme que l'utilisateur dispose d'un indice qu'il
     # pourra utiliser lorsqu'il ne lui restera plus qu'une vie
